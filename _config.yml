@@ -25,7 +25,7 @@ socials:
     external: true
   - name: Email
     icon: mail
-    url: "mailto:your@email.com"
+    url: "mailto:yuanchongbit@foxmail.com"
   - name: Rss
     icon: rss
     url: /feed.xml
