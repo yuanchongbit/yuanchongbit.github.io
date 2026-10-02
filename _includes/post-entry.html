@@ -1,0 +1,12 @@
+<article class="post-entry">
+  <header class="entry-header">
+    <h2>{{ include.post.title }}</h2>
+  </header>
+  <section class="entry-content">
+    <p>{% if include.post.description %}{{ include.post.description }}{% else %}{{ include.post.content | strip_html | normalize_whitespace | truncate: 180 }}…{% endif %}</p>
+  </section>
+  <footer class="entry-footer">
+    日期：{{ include.post.date | date: "%Y年%-m月%-d日" }} &nbsp;|&nbsp; 预计阅读时间：{{ include.post.content | strip_html | size | divided_by: 400.0 | ceil | at_least: 1 }} 分钟 &nbsp;|&nbsp; 作者：{{ site.author }}
+  </footer>
+  <a class="entry-link" aria-label="post link to {{ include.post.title | xml_escape }}" href="{{ include.post.url }}"></a>
+</article>

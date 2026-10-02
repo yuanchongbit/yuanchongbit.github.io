@@ -1,0 +1,25 @@
+---
+layout: default
+body_class: list
+---
+<article class="first-entry home-info">
+  <header class="entry-header">
+    <h1>{{ site.home_title }}</h1>
+  </header>
+  <section class="entry-content">
+    <p>{{ site.home_intro }}</p>
+  </section>
+  <footer class="entry-footer">
+    <div class="social-icons">
+      {% for s in site.socials %}
+      <a href="{{ s.url }}" {% if s.external %}target="_blank" rel="noopener noreferrer me"{% else %}target="_self"{% endif %} title="{{ s.name }}">
+        {% include icon.html name=s.icon %}
+      </a>
+      {% endfor %}
+    </div>
+  </footer>
+</article>
+
+{% for post in site.posts %}
+  {% include post-entry.html post=post %}
+{% endfor %}

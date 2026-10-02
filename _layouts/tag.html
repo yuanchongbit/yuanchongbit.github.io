@@ -1,0 +1,12 @@
+---
+layout: default
+---
+<header class="page-header">
+  <h1>{{ page.tag_name }}</h1>
+</header>
+
+{% for post in site.posts %}
+  {% if post.tags contains page.tag_name %}
+    {% include post-entry.html post=post %}
+  {% endif %}
+{% endfor %}

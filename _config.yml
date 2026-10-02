@@ -1,0 +1,38 @@
+title: yuanchongbit
+author: yuanchongbit
+description: 记录学习笔记与技术思考的个人博客
+url: "https://yuanchongbit.github.io"
+lang: zh-CN
+timezone: Asia/Shanghai
+permalink: /posts/:year-:month-:day-:title/
+markdown: kramdown
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      mathjax: true
+kramdown:
+  auto_ids: false
+  math_engine: ~
+home_title: "👋 Welcome to yuanchongbit's Blog"
+home_intro: "Hi, 这里是 yuanchongbit。我在这个博客里记录我的学习笔记与技术思考，欢迎常来。"
+socials:
+  - name: Github
+    icon: github
+    url: https://github.com/yuanchongbit
+    external: true
+  - name: Email
+    icon: mail
+    url: "mailto:your@email.com"
+  - name: Rss
+    icon: rss
+    url: /feed.xml
+    external: true
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - node_modules

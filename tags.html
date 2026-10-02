@@ -1,0 +1,15 @@
+---
+layout: default
+body_class: list
+---
+<header class="page-header">
+  <h1>Tags</h1>
+</header>
+
+{% assign all_tags = site.posts | map: "tags" | join: "|" | split: "|" | uniq | sort %}
+<div class="terms-tags">
+  {% for t in all_tags %}
+    {% assign count = site.posts | map: "tags" | join: "|" | split: "|" | where_exp: "x", "x == t" | size %}
+    <a href="/tags/{{ t | url_encode }}/">{{ t }} <sup><b><span>{{ count }}</span></b></sup></a>
+  {% endfor %}
+</div>

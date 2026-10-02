@@ -1,45 +1,46 @@
 # yuanchongbit.github.io
 
-个人博客，参考 [Lil'Log](https://lilianweng.github.io/)（PaperMod 风格）的设计，使用 [Eleventy](https://www.11ty.dev/) 搭建，托管在 GitHub Pages。
+个人博客，参考 [Lil'Log](https://lilianweng.github.io/)（PaperMod 风格）的设计，使用 [Jekyll](https://jekyllrb.com/) 搭建，托管在 GitHub Pages。
 
 线上地址：https://yuanchongbit.github.io
 
 ## 本地开发
 
 ```bash
-npm install
-npm run dev        # 启动开发服务器，默认 http://localhost:8080
+bundle install
+bundle exec jekyll serve    # 启动开发服务器，默认 http://localhost:4000
 ```
 
 ## 写文章
 
-在 `src/posts/` 下新建 Markdown 文件，文件名即 URL（建议 `YYYY-MM-DD-slug.md`）：
+在 `_posts/` 下新建 Markdown 文件，文件名必须是 `YYYY-MM-DD-标题.md` 格式（日期决定文章 URL 和排序）：
 
 ```markdown
 ---
 title: "文章标题"
-date: 2026-01-01
 description: "首页列表展示的摘要"
-tags: [posts, 标签一]
+tags: [标签一, 标签二]
 ---
 
-正文，支持 Markdown。数学公式用 $...$（行内）和 $$...$$（块级）。
+正文，支持 Markdown。数学公式用 $...$（行内）和 $$...$$（块级），
+页面会自动启用 MathJax（由 _config.yml 的 defaults 配置）。
 ```
 
-保存后刷新浏览器即可看到效果。
+新增标签后，在 `tag/` 下建一个与标签同名的 `.md` 文件（如 `tag/随笔.md`），标签页才会生效。
 
 ## 目录结构
 
 | 路径 | 说明 |
 | --- | --- |
-| `src/_data/site.json` | 站点标题、作者、简介、社交链接（改这里换名字/链接） |
-| `src/_includes/` | 布局（`layouts/`）与页头页脚、图标片段 |
-| `src/assets/` | 样式、脚本、favicon；明暗主题配色在 `css/style.css` 顶部变量区 |
-| `src/posts/` | 文章（Markdown） |
-| `src/*.njk` | 各页面：首页、归档、标签、搜索、About、RSS、sitemap |
+| `_config.yml` | 站点标题、作者、URL、固定链接格式、defaults（改这里换名字/链接） |
+| `_layouts/` | 布局：`default`（外壳）、`post`（文章页）、`page`、`tag`（标签列表页） |
+| `_includes/` | 页头、页脚、图标等片段 |
+| `_posts/` | 文章（Markdown） |
+| `tag/` | 各标签的落地页 |
+| `assets/` | 样式、脚本、favicon；明暗主题配色在 `css/style.css` 顶部变量区 |
 
 ## 部署
 
-仓库已包含 `.github/workflows/deploy.yml`，push 到 `main` 后自动构建并部署。
+零配置：不需要任何 workflow。push 到 `main` 后 GitHub Pages 自动用 Jekyll 构建。
 
-首次使用需在 GitHub 仓库 **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions**。
+仓库 **Settings → Pages → Build and deployment → Source** 保持 **Deploy from a branch**（main /root）即可。

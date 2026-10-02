@@ -1,0 +1,40 @@
+<header class="header">
+  <nav class="nav">
+    <div class="logo">
+      <a href="/" accesskey="h" title="{{ site.title }} (Alt + H)">{{ site.title }}</a>
+      <span class="logo-switches">
+        <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+          {% include icon.html name="moon" %}
+          {% include icon.html name="sun" %}
+        </button>
+      </span>
+    </div>
+    <ul id="menu">
+      <li>
+        <a href="/" title="Posts">
+          <span {% if page.url == "/" or page.url contains "/posts/" %}class="active"{% endif %}>Posts</span>
+        </a>
+      </li>
+      <li>
+        <a href="/archives/" title="Archives">
+          <span {% if page.url contains "/archives" %}class="active"{% endif %}>Archives</span>
+        </a>
+      </li>
+      <li>
+        <a href="/search/" title="Search">
+          <span {% if page.url contains "/search" %}class="active"{% endif %}>Search</span>
+        </a>
+      </li>
+      <li>
+        <a href="/tags/" title="Tags">
+          <span {% if page.url contains "/tags" %}class="active"{% endif %}>Tags</span>
+        </a>
+      </li>
+      <li>
+        <a href="/about/" title="About">
+          <span {% if page.url contains "/about" %}class="active"{% endif %}>About</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
