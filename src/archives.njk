@@ -1,0 +1,18 @@
+{% extends "layouts/base.njk" %}
+{% set bodyClass = "list" %}
+
+{% block content %}
+<header class="page-header">
+  <h1>Archives</h1>
+</header>
+
+{% for group in collections.posts | groupByYear %}
+<div class="archive-year">{{ group.year }}</div>
+{% for post in group.posts %}
+<div class="archive-entry">
+  <a class="archive-entry-title" href="{{ post.url }}">{{ post.data.title }}</a>
+  <div class="archive-meta">{{ post.date | readableDate }}</div>
+</div>
+{% endfor %}
+{% endfor %}
+{% endblock %}

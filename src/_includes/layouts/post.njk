@@ -1,0 +1,37 @@
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">{{ title }}</h1>
+    <div class="post-meta">
+      日期：{{ page.date | readableDate }} &nbsp;|&nbsp; 预计阅读时间：{{ content | readTime }} 分钟 &nbsp;|&nbsp; 作者：{{ site.author }}
+    </div>
+  </header>
+
+  {% set tocHTML = content | toc %}
+  {% if tocHTML %}
+  <div class="toc">
+    <details>
+      <summary><span class="details">目录</span></summary>
+      <div class="inner">{{ tocHTML | safe }}</div>
+    </details>
+  </div>
+  {% endif %}
+
+  <div class="post-content">
+    {{ content | safe }}
+  </div>
+
+  {% set postTags = tags | reject("equalto", "posts") | list %}
+  {% if postTags | length %}
+  <footer class="post-footer">
+    <ul class="post-tags">
+      {% for t in postTags %}
+      <li><a href="/tags/{{ t | slugify }}/"># {{ t }}</a></li>
+      {% endfor %}
+    </ul>
+  </footer>
+  {% endif %}
+</article>
+{% endblock %}

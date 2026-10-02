@@ -1,0 +1,11 @@
+{% extends "layouts/base.njk" %}
+{% set bodyClass = "list" %}
+
+{% block content %}
+<div id="searchbox">
+  <input id="searchInput" autofocus placeholder="输入关键词搜索文章..." type="search" />
+  <ul id="searchResults"></ul>
+</div>
+
+<script type="module" src="/assets/js/search.js"></script>
+{% endblock %}

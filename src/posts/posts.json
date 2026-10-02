@@ -1,0 +1,6 @@
+{
+  "layout": "layouts/post.njk",
+  "tags": ["posts"],
+  "mathjax": true,
+  "permalink": "/posts/{{ page.date.toISOString().slice(0, 10) }}-{{ page.filePathStem | replace('/posts/', '') }}/"
+}

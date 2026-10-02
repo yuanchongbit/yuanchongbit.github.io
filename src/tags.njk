@@ -1,0 +1,14 @@
+{% extends "layouts/base.njk" %}
+{% set bodyClass = "list" %}
+
+{% block content %}
+<header class="page-header">
+  <h1>Tags</h1>
+</header>
+
+<div class="terms-tags">
+  {% for t in collections.tagList %}
+  <a href="/tags/{{ t.name | slugify }}/">{{ t.name }} <sup><b><span>{{ t.count }}</span></b></sup></a>
+  {% endfor %}
+</div>
+{% endblock %}

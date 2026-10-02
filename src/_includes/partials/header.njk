@@ -1,0 +1,31 @@
+{% from "partials/icons.njk" import moon, sun %}
+
+<header class="header">
+  <nav class="nav">
+    <div class="logo">
+      <a href="/" accesskey="h" title="{{ site.title }} (Alt + H)">{{ site.title }}</a>
+      <span class="logo-switches">
+        <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+          {{ moon() }}
+          {{ sun() }}
+        </button>
+      </span>
+    </div>
+    <ul id="menu">
+      {% set nav = [
+        { "href": "/", "label": "Posts", "match": ["/", "/posts/"] },
+        { "href": "/archives/", "label": "Archives", "match": ["/archives"] },
+        { "href": "/search/", "label": "Search", "match": ["/search"] },
+        { "href": "/tags/", "label": "Tags", "match": ["/tags"] },
+        { "href": "/about/", "label": "About", "match": ["/about"] }
+      ] %}
+      {% for item in nav %}
+      <li>
+        <a href="{{ item.href }}" title="{{ item.label }}">
+          <span {% if item.match and (item.match | containsUrl(page.url)) %}class="active"{% endif %}>{{ item.label }}</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</header>
